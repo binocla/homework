@@ -1,1 +1,1 @@
-worker: java -jar /target/application-jar-with-dependencies.jar
+worker: sh target/bin/worker

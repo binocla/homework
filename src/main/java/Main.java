@@ -5,12 +5,23 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+
 
 public class Main extends TelegramLongPollingBot {
+    private static final String PORT = System.getenv("PORT");
     @SneakyThrows
     public static void main(String[] args) {
         TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
         botsApi.registerBot(new Main());
+        try (ServerSocket serverSocket = new ServerSocket(Integer.parseInt(PORT))) {
+            while (true) {
+                serverSocket.accept();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

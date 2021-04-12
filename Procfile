@@ -1,0 +1,1 @@
+worker: java -jar /target/application-jar-with-dependencies.jar

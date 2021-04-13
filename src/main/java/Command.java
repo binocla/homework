@@ -7,4 +7,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Command {
     String description();
+    String additionalInfo() default "Пока что функционал не определен";
 }

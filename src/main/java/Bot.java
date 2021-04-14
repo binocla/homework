@@ -44,13 +44,14 @@ public class Bot extends TelegramLongPollingBot {
             sendMessage.setChatId(chat_id);
             Message str = update.getMessage();
             switch (str.getText()) {
-                case "/help", "/start" -> sendMessage.setText(BotCommands.help());
-                case "/reg" -> sendMessage.setText(BotCommands.reg(update));
-                case "/del" -> sendMessage.setText(BotCommands.del(update));
                 case "/bye" -> sendMessage.setText(BotCommands.bye());
                 case "/hello" -> sendMessage.setText(BotCommands.hello());
                 case "/show" -> sendMessage.setText(String.valueOf(BotCommands.show()));
                 default -> sendMessage.setText("Команда не найдена! Напишите /help или /start!");
+            }
+            if (str.getText().startsWith("/help")  || str.getText().startsWith("/start") ||
+                str.getText().startsWith("/reg") || str.getText().startsWith("/del")) {
+                sendMessage.setText(BotCommands.proceedCommand(update.getMessage().getFrom(), str.getText()));
             }
             execute(sendMessage);
         }

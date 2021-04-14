@@ -36,11 +36,11 @@ public class BotCommands {
     }
     @Command(description = "Привет", additionalInfo = "Бот выводит Привет")
     public static String hello() { return "Привет!"; }
-    @Command(description = "Регистрация", additionalInfo = "Бот регистрирует пользователя. По /reg - по юзернейму, по /reg *name* по кастомному имени (inProgress)")
+    @Command(description = "Регистрация", additionalInfo = "Бот регистрирует пользователя. По /reg - по юзернейму, по /reg *name* по кастомному имени")
     public static String reg(String username) {
             return UserController.Register(username);
     }
-    @Command(description = "Удаление", additionalInfo = "Бот удаляет пользователя. Работает по принципу регистрации (/del *name* inProgess)")
+    @Command(description = "Удаление", additionalInfo = "Бот удаляет пользователя. Работает по принципу регистрации (/del *name*)")
     public static String del(String username) {
         return UserController.Delete(username);
     }
